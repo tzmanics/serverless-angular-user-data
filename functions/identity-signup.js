@@ -5,8 +5,8 @@ exports.handler = async (event, context) => {
 
   const responseBodyString = JSON.stringify({
     query: `
-      mutation insertUser($id: String, $email:String, $name:String){
-        insert_users(objects: {id: $id, email: $email, name: $name}) {
+      mutation insertUser($id: String, $email:String, $name:String, $created:TimeStamp, $updated:TimeStamp){
+        insert_users(objects: {id: $id, email: $email, name: $name, created: $created, updated: $updated}) {
           affected_rows
         }
       }
@@ -15,11 +15,11 @@ exports.handler = async (event, context) => {
       id: user.id,
       email: user.email,
       name: user.user_metadata.full_name,
+      created: user.created_at,
+      updated: user.updated_at,
     },
   });
 
-  console.log(user);
-  console.log('-----------');
   console.log(responseBodyString);
 
   const result = await fetch('https://accepted-loon-76.hasura.app/v1/graphql', {
