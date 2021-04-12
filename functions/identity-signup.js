@@ -1,11 +1,11 @@
 const fetch = require('node-fetch');
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
   const { user } = JSON.parse(event.body);
 
   const responseBodyString = JSON.stringify({
     query: `
-      mutation insertUser($id: String, $email:String, $name:String, $created:TimeStamp, $updated:TimeStamp){
+      mutation insertUser($id: String, $email:String, $name:String, $created:timestamptz, $updated:timestamptz){
         insert_users(objects: {id: $id, email: $email, name: $name, created: $created, updated: $updated}) {
           affected_rows
         }
@@ -20,6 +20,8 @@ exports.handler = async (event, context) => {
     },
   });
 
+  console.log(user);
+  console.log('---------------');
   console.log(responseBodyString);
 
   const result = await fetch('https://accepted-loon-76.hasura.app/v1/graphql', {
@@ -42,7 +44,7 @@ exports.handler = async (event, context) => {
   } else {
     return {
       statusCode: 200,
-      body: JSON.stringify(responseBody),
+      body: JSON.stringify(responseBodyString),
     };
   }
 };
