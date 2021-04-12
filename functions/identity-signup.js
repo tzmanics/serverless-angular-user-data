@@ -19,6 +19,7 @@ exports.handler = async (event, context) => {
   });
 
   console.log(user);
+  console.log('-----------');
   console.log(responseBodyString);
 
   const result = await fetch('https://accepted-loon-76.hasura.app/v1/graphql', {
