@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "serverless-angular-auth": {
+    "serverless-angular-user-data": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/serverless-angular-auth",
+            "outputPath": "dist/serverless-angular-user-data",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -60,18 +60,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "serverless-angular-auth:build"
+            "browserTarget": "serverless-angular-user-data:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "serverless-angular-auth:build:production"
+              "browserTarget": "serverless-angular-user-data:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "serverless-angular-auth:build"
+            "browserTarget": "serverless-angular-user-data:build"
           }
         },
         "test": {
@@ -101,18 +101,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "serverless-angular-auth:serve"
+            "devServerTarget": "serverless-angular-user-data:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "serverless-angular-auth:serve:production"
+              "devServerTarget": "serverless-angular-user-data:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "serverless-angular-auth",
+  "defaultProject": "serverless-angular-user-data",
   "cli": {
     "analytics": "f33e8aef-82e4-48f9-97d1-73599e666adf"
   }
