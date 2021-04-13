@@ -5,8 +5,8 @@ exports.handler = async (event) => {
 
   const responseBodyString = JSON.stringify({
     query: `
-      mutation insertUser($id: String, $email:String, $name:String, $created:timestamptz, $updated:timestamptz){
-        insert_users(objects: {id: $id, email: $email, name: $name, created: $created, updated: $updated}) {
+      mutation insertUser($id: String, $email:String, $name:String, $avatar:String, $created:timestamptz, $updated:timestamptz){
+        insert_users(objects: {id: $id, email: $email, name: $name, avatar: $avatar, created: $created, updated: $updated}) {
           affected_rows
         }
       }
@@ -15,6 +15,7 @@ exports.handler = async (event) => {
       id: user.id,
       email: user.email,
       name: user.user_metadata.full_name,
+      avatar: user.user_metadata.avatar_url,
       created: user.created_at,
       updated: user.updated_at,
     },
