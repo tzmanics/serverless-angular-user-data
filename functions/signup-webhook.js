@@ -3,20 +3,6 @@ const fetch = require('node-fetch');
 exports.handler = async (event) => {
   const { user } = JSON.parse(event.body);
 
-  const responseBody = {
-    app_metadata: {
-      roles:
-        user.email.split('@')[1] === 'trust-this-company.com'
-          ? ['editor']
-          : ['visitor'],
-      my_user_info: 'this is some user info',
-    },
-    user_metadata: {
-      ...user.user_metadata, // append current user metadata
-      custom_data_from_function: 'hurray this is some extra metadata',
-    },
-  };
-
   const responseBodyString = JSON.stringify({
     query: `
       mutation insertUser($id: String, $email:String, $name:String, $avatar:String, $created:timestamptz, $updated:timestamptz){
@@ -55,7 +41,7 @@ exports.handler = async (event) => {
   } else {
     return {
       statusCode: 200,
-      body: JSON.stringify(responseBody),
+      body: JSON.stringify(responseBodyString),
     };
   }
 };
