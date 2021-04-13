@@ -21,16 +21,12 @@ exports.handler = async (event) => {
     },
   });
 
-  console.log(user);
-  console.log('---------------');
-  console.log(responseBodyString);
-
   const result = await fetch('https://accepted-loon-76.hasura.app/v1/graphql', {
     method: 'POST',
     body: responseBodyString,
     headers: {
-      'Content-Type': 'application/json',
-      'x-hasura-admin-secret': process.env.HASURA_SECRET,
+      "Content-Type": "application/json",
+      "x-hasura-admin-secret": process.env.HASURA_SECRET,
     },
   });
 
