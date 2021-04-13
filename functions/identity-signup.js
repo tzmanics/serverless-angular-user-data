@@ -15,7 +15,7 @@ exports.handler = async (event) => {
       id: user.id,
       email: user.email,
       name: user.user_metadata.full_name,
-      avatar: user.user_metadata.avatar_url,
+      avatar: user.user_metadata.avatar_url || 'https://bit.ly/3seu63O',
       created: user.created_at,
       updated: user.updated_at,
     },
